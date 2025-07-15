@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Navbar Responsive</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-5">
+                    <img src="../assets/LOGO.png" alt="Logo" class="h-16 w-16 object-contain">
+                    <div class="flex flex-col items-start">
+                        <span class="font-heading text-md">ระบบบริการการศึกษา</span>
+                        <span class="font-heading text-md">มหาวิทยาลัยแม่โจ้</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Menu (Desktop) -->
+                <div class="menu-desktop hidden md:flex space-x-6 text-md items-center">
+                    <a href="#">หน้าแรก</a>
+                    <a href="#">ตารางเรียน</a>
+                    <a href="#">การใช้ห้อง</a>
+                    <a href="#">ปฏิทิน</a>
+                    <a href="../" id="logout" class="bg-gray-200 px-4 py-1 rounded-lg shadow">
+                        ออกจากระบบ
+                    </a>
+
+                </div>
+
+                <!-- Hamburger (Mobile) -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="focus:outline-none cursor-pointer">
+                        <!-- Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu (Mobile) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-green-600 text-white transition-all duration-300 ease-in-out">
+            <a href="#" class="block px-4 py-3 hover:bg-green-500">หน้าแรก</a>
+            <a href="#" class="block px-4 py-3 hover:bg-green-500">ตารางเรียน</a>
+            <a href="#" class="block px-4 py-3 hover:bg-green-500">การใช้ห้อง</a>
+            <a href="#" class="block px-4 py-3 hover:bg-green-500">ปฏิทิน</a>
+            <a href="#" id="logout" class="block px-4 py-3 bg-white text-green-700 rounded-b-lg">
+                ออกจากระบบ
+            </a>
+        </div>
+
+
+    </nav>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>
