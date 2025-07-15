@@ -21,8 +21,10 @@ input:focus {
   transition: 0.3s ease-in-out;
   color: #333;
   text-decoration: none;
+
   &:hover {
     transition: 0.3s ease-in-out;
+    scale: 1.1;
     text-decoration: underline;
     color: #07af31;
   }
