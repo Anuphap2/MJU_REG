@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>MJU | เข้าสู่ระบบสำหรับนักศึกษา</title>
+</head>
+
+<body>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="card border border-gray-300 rounded-lg shadow-lg p-6 w-full max-w-5xl bg-white">
+            <!-- Layout: Mobile = Column, Desktop = Row -->
+            <div class="flex flex-col lg:flex-row lg:items-center">
+                <!-- LOGO Section -->
+                <div class="flex justify-center items-center lg:w-1/2 mb-6 lg:mb-0">
+                    <img class="w-40 lg:w-64" src="assets/LOGO.png" alt="LOGO">
+                </div>
+
+                <!-- Form Section -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-inner lg:w-1/2">
+                    <div class="text-center mb-6">
+                        <h2 class="text-3xl font-bold mb-2">ระบบบริการการศึกษา</h2>
+                        <h5 class="text-xl text-gray-600">สำหรับนักศึกษา</h5>
+                    </div>
+                    <form>
+                        <div class="mb-4">
+                            <label for="student_id" class="block mb-1 font-semibold">รหัสนักศึกษา</label>
+                            <input type="text" id="student_id"
+                                class="border border-gray-300 p-2 w-full rounded-lg focus:ring-2 focus:ring-green-500"
+                                placeholder="กรุณากรอกรหัสนักศึกษา">
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="block mb-1 font-semibold">รหัสผ่าน</label>
+                            <input type="password" id="password"
+                                class="border border-gray-300 p-2 w-full rounded-lg focus:ring-2 focus:ring-green-500"
+                                placeholder="กรุณากรอกรหัสผ่าน">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition">
+                            เข้าสู่ระบบ
+                        </button>
+                    </form>
+                    <div class="text-center text-sm text-gray-500 mt-4">
+                        <a class="underline hover:text-green-700" href="forTeacher.html">สำหรับอาจารย์</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
