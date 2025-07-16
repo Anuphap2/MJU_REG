@@ -1,1 +1,14 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Card style ใช้กับกล่องข้อมูลทั่วไป */
+.card-info {
+  @apply bg-white rounded-lg shadow;
+}
+
+/* Container หลัก */
+.container-main {
+  @apply w-full px-4 py-8 mx-auto;
+}
