@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJU | ระบบบริการการศึกษา</title>
+    <link rel="stylesheet" href="../../../css/output.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-5">
+                    <img src="../../../assets/LOGO.png" alt="Logo" class="h-16 w-16 object-contain">
+                    <div class="flex flex-col items-start">
+                        <span class="font-heading text-md">ระบบบริการการศึกษา</span>
+                        <span class="font-heading text-md">มหาวิทยาลัยแม่โจ้</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Menu (Desktop) -->
+                <div id="menu-desktop" class="hidden md:flex space-x-6 text-md items-center">
+                    <a href="../">หน้าแรก</a>
+                    <a href="../schedule/">ตารางสอน</a>
+                    <a href="">บันทึกเกรดรายบุคคล</a>
+                    <a href="../rooms/">การใช้ห้อง</a>
+                    <a href="../calendar/">ปฏิทิน</a>
+                    <a href="../../../" id="logout" class="bg-gray-200 px-4 py-1 rounded-lg shadow">
+                        ออกจากระบบ
+                    </a>
+
+                </div>
+
+                <!-- Hamburger (Mobile) -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="focus:outline-none cursor-pointer">
+                        <!-- Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu (Mobile) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-green-600 text-white transition-all duration-300 ease-in-out">
+            <a href="../" class="block px-4 py-3 hover:bg-green-500">หน้าแรก</a>
+            <a href="../schedule/" class="block px-4 py-3 hover:bg-green-500">ตารางสอน</a>
+            <a href="" class="block px-4 py-3 hover:bg-green-500">บันทึกเกรดรายบุคคล</a>
+
+            <a href="../rooms/" class="block px-4 py-3 hover:bg-green-500">การใช้ห้อง</a>
+            <a href="../calendar/" class="block px-4 py-3 hover:bg-green-500">ปฏิทิน</a>
+            <a href="../../../" id="logout" class="block px-4 py-3 bg-white text-green-700">
+                ออกจากระบบ
+            </a>
+        </div>
+
+
+    </nav>
+
+
+    <main>
+        <div class="w-full px-4 py-8 mx-auto">
+            <div class="w-full p-6 rounded-lg">
+                <div class="bg-white mb-6 p-6 md:p-8 rounded-lg shadow-lg">
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 font-heading">บันทึกเกรด</h1>
+
+                    <!-- ตัวกรอง -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div>
+                            <label class="font-semibold text-gray-900 text-base md:text-lg">รายวิชา</label>
+                            <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+                                <option>10301231 : เว็บเทคโนโลยี</option>
+                                <option>10301223 : ฐานข้อมูล</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-gray-900 text-base md:text-lg">กลุ่ม</label>
+                            <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-gray-900 text-base md:text-lg">ปีการศึกษา</label>
+                            <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+                                <option>2568 / 1</option>
+                                <option>2567 / 2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ตารางบันทึกเกรด -->
+                    <div class="mt-6 overflow-x-auto">
+                        <table class="w-full border border-gray-200 border-collapse text-center text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-4 py-2 border">รหัสนักศึกษา</th>
+                                    <th class="px-4 py-2 border">ชื่อ - สกุล</th>
+                                    <th class="px-4 py-2 border">งาน</th>
+                                    <th class="px-4 py-2 border">กลางภาค</th>
+                                    <th class="px-4 py-2 border">ปลายภาค</th>
+                                    <th class="px-4 py-2 border">รวม</th>
+                                    <th class="px-4 py-2 border">เกรด</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border px-4 py-2">6704101388</td>
+                                    <td class="border px-4 py-2 text-left">นายอานุภาพ ศรเทียน</td>
+                                    <td class="border px-2 py-2">
+                                        <input type="number" class="w-16 border rounded px-2 py-1" max="30" min="0">
+                                    </td>
+                                    <td class="border px-2 py-2">
+                                        <input type="number" class="w-16 border rounded px-2 py-1" max="30" min="0">
+                                    </td>
+                                    <td class="border px-2 py-2">
+                                        <input type="number" class="w-16 border rounded px-2 py-1" max="40" min="0">
+                                    </td>
+                                    <td class="border px-4 py-2">-</td>
+                                    <td class="border px-2 py-2">
+                                        <select class="border rounded px-2 py-1">
+                                            <option>-</option>
+                                            <option>A</option>
+                                            <option>B+</option>
+                                            <option>B</option>
+                                            <option>C+</option>
+                                            <option>C</option>
+                                            <option>D+</option>
+                                            <option>D</option>
+                                            <option>F</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <!-- เพิ่มแถวอื่นๆ -->
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+                    <div class="mt-6 text-right">
+                        <button
+                            class="bg-blue-200 text-white px-6 py-2 rounded-lg hover:bg-blue-700 cursor-pointer">บันทึกเกรด</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="bg-white shadow-[0_-4px_6px_rgba(0,0,0,0.1)] mt-8">
+        <div class="container mx-auto px-4 py-6 text-center">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <img class="h-12 w-auto" src="../../../assets/LOGO.png" alt="มหาวิทยาลัยแม่โจ้ Logo">
+                <p class="text-gray-600 text-sm sm:text-base">
+                    &copy; 2025 มหาวิทยาลัยแม่โจ้. สงวนลิขสิทธิ์.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../js/hamberger.js"></script>
+
+
+</body>
+
+</html>

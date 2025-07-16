@@ -13,13 +13,12 @@
 
     <!-- Navbar -->
     <nav class="bg-white shadow-lg">
-
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
 
                 <!-- Logo -->
                 <div class="flex items-center space-x-5">
-                    <img src="../../assets/LOGO.png" alt="Logo" class="h-16 w-16 object-contain">
+                    <img src="../../../assets/LOGO.png" alt="Logo" class="h-16 w-16 object-contain">
                     <div class="flex flex-col items-start">
                         <span class="font-heading text-md">ระบบบริการการศึกษา</span>
                         <span class="font-heading text-md">มหาวิทยาลัยแม่โจ้</span>
@@ -31,10 +30,11 @@
                 <!-- Menu (Desktop) -->
                 <div id="menu-desktop" class="hidden md:flex space-x-6 text-md items-center">
                     <a href="">หน้าแรก</a>
-                    <a href="schedule/">ตารางเรียน</a>
+                    <a href="schedule/">ตารางสอน</a>
+                    <a href="grade/">บันทึกเกรดรายบุคคล</a>
                     <a href="rooms/">การใช้ห้อง</a>
                     <a href="calendar/">ปฏิทิน</a>
-                    <a href="../../../" id="logout" class="bg-gray-200 px-4 py-1 rounded-lg shadow">
+                    <a href="../../" id="logout" class="bg-gray-200 px-4 py-1 rounded-lg shadow">
                         ออกจากระบบ
                     </a>
 
@@ -57,20 +57,18 @@
         <!-- Dropdown Menu (Mobile) -->
         <div id="mobile-menu" class="hidden md:hidden bg-green-600 text-white transition-all duration-300 ease-in-out">
             <a href="" class="block px-4 py-3 hover:bg-green-500">หน้าแรก</a>
-            <a href="schedule/" class="block px-4 py-3 hover:bg-green-500">ตารางเรียน</a>
+            <a href="schedule/" class="block px-4 py-3 hover:bg-green-500">ตารางสอน</a>
+            <a href="#" class="block px-4 py-3 hover:bg-green-500">บันทึกเกรดรายบุคคล</a>
             <a href="rooms/" class="block px-4 py-3 hover:bg-green-500">การใช้ห้อง</a>
             <a href="calendar/" class="block px-4 py-3 hover:bg-green-500">ปฏิทิน</a>
-            <a href="../../../" id="logout" class="block px-4 py-3 bg-white text-green-700">
+            <a href="../../" id="logout" class="block px-4 py-3 bg-white text-green-700">
                 ออกจากระบบ
             </a>
         </div>
 
 
     </nav>
-
-
     <main>
-
         <section class="w-full mx-auto">
             <div class="relative w-full overflow-hidden">
                 <!-- Carousel Wrapper -->
@@ -195,7 +193,6 @@
             </div>
         </div>
     </main>
-
     <footer class="bg-white shadow-[0_-4px_6px_rgba(0,0,0,0.1)] mt-8">
         <div class="container mx-auto px-4 py-6 text-center">
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
@@ -211,9 +208,7 @@
 
 
 
-  
     <script src="../../js/carousel.js"></script>
-
     <script src="../../js/hamberger.js"></script>
 
 
