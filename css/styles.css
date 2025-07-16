@@ -17,7 +17,7 @@ input:focus {
   font-family: "K2D", serif; /* Noto Serif Thai Font สำหรับหัวข้อ */
 }
 
-.menu-desktop a {
+#menu-desktop a {
   transition: 0.3s ease-in-out;
   color: #333;
   text-decoration: none;
@@ -35,3 +35,13 @@ input:focus {
   text-decoration: red underline;
 }
 
+
+thead {
+  background-color: #6c8c6a;
+  color: white;
+}
+
+.bg-mju {
+  background-color: #6c8c6a;
+  color: white;
+}

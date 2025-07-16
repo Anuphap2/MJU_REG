@@ -28,11 +28,11 @@
 
 
                 <!-- Menu (Desktop) -->
-                <div class="menu-desktop hidden md:flex space-x-6 text-md items-center">
+                <div id="menu-desktop" class="hidden md:flex space-x-6 text-md items-center">
                     <a href="../student.html">หน้าแรก</a>
                     <a href="">ตารางเรียน</a>
-                    <a href="#">การใช้ตึก</a>
-                    <a href="#">ปฏิทิน</a>
+                    <a href="#">การใช้ห้อง</a>
+                    <a href="../calendar/">ปฏิทิน</a>
                     <a href="../" id="logout" class="bg-gray-200 px-4 py-1 rounded-lg shadow">
                         ออกจากระบบ
                     </a>
@@ -55,10 +55,10 @@
 
         <!-- Dropdown Menu (Mobile) -->
         <div id="mobile-menu" class="hidden md:hidden bg-green-600 text-white transition-all duration-300 ease-in-out">
-            <a href="#" class="block px-4 py-3 hover:bg-green-500">หน้าแรก</a>
-            <a href="#" class="block px-4 py-3 hover:bg-green-500">ตารางเรียน</a>
-            <a href="#" class="block px-4 py-3 hover:bg-green-500">การใช้ตึก</a>
-            <a href="#" class="block px-4 py-3 hover:bg-green-500">ปฏิทิน</a>
+            <a href="../student.html" class="block px-4 py-3 hover:bg-green-500">หน้าแรก</a>
+            <a href="" class="block px-4 py-3 hover:bg-green-500">ตารางเรียน</a>
+            <a href="#" class="block px-4 py-3 hover:bg-green-500">การใช้ห้อง</a>
+            <a href="../calendar/" class="block px-4 py-3 hover:bg-green-500">ปฏิทิน</a>
             <a href="../" id="logout" class="block px-4 py-3 bg-white text-gray-700">
                 ออกจากระบบ
             </a>
@@ -69,7 +69,8 @@
 
 
     <main>
-        <div class="container w-full px-4 py-8 mx-auto">
+        <!-- Conitainer -->
+        <div class="w-full px-4 py-8 mx-auto">
             <div class="w-full p-6 rounded-lg">
                 <div class="bg-white mb-6 p-6 md:p-8 rounded-lg shadow-lg">
                     <!-- หัวข้อ -->
@@ -101,7 +102,7 @@
                     <div class="mt-6 flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
                         <label for="year" class="font-semibold text-gray-900 text-base md:text-lg">ปีการศึกษา:</label>
                         <select id="year" name="year"
-                            class="border border-gray-300 rounded-md px-3 py-2 bg-white text-gray-700 text-base md:text-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400">
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white text-gray-700 text-base md:text-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400">
                             <option value="2568-1" selected>2568 / 1</option>
                             <option value="2568-2">2568 / 2</option>
                             <option value="2567-1">2567 / 1</option>
@@ -114,10 +115,10 @@
                 </div>
 
 
-                <div class="overflow-x-auto shadow-md rounded-lg">
+                <div class="overflow-x-auto rounded-lg">
                     <div class="hidden md:block">
                         <!-- ตารางสำหรับหน้าจอ md ขึ้นไป -->
-                        <table class="w-full border border-gray-300 border-collapse text-center text-sm">
+                        <table class="w-full border border-gray-200 border-collapse text-center text-sm">
                             <thead class="bg-gray-700 text-white sticky top-0">
                                 <tr>
                                     <th rowspan="2" class="px-4 py-2 border">วัน/เวลา</th>
@@ -267,10 +268,10 @@
                     <div class="md:hidden space-y-4">
 
                         <!-- จันทร์ -->
-                        <div class="border rounded-lg shadow-lg text-center overflow-hidden">
+                        <div class="rounded-lg shadow-lg text-center overflow-hidden">
 
                             <button
-                                class="w-full px-4 py-3 text-left bg-gray-700 text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                class="w-full px-4 py-3 text-left bg-mju text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
                                 จันทร์ <span class="text-white">+</span>
                             </button>
                             <div class="hidden accordion-content bg-gray-50 px-4 py-3 space-y-4 p-3">
@@ -296,9 +297,9 @@
                         </div>
 
                         <!-- อังคาร -->
-                        <div class="border rounded-lg shadow-lg text-center overflow-hidden">
+                        <div class="rounded-lg shadow-lg text-center overflow-hidden">
                             <button
-                                class="w-full px-4 py-3 text-left bg-gray-700 text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                class="w-full px-4 py-3 text-left bg-mju  text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
                                 อังคาร <span class="text-white">+</span>
                             </button>
                             <div class="hidden accordion-content bg-gray-50 px-4 py-3 space-y-4">
@@ -339,10 +340,10 @@
                         </div>
 
                         <!-- พุธ -->
-                        <div class="border rounded-lg shadow-lg text-center overflow-hidden">
+                        <div class="rounded-lg shadow-lg text-center overflow-hidden">
 
                             <button
-                                class="w-full px-4 py-3 text-left bg-gray-700 text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                class="w-full px-4 py-3 text-left bg-mju  text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
                                 พุธ <span class="text-white">+</span>
                             </button>
 
@@ -359,10 +360,10 @@
                         </div>
 
                         <!-- พฤหัสบดี -->
-                        <div class="border rounded-lg shadow-lg text-center overflow-hidden">
+                        <div class="rounded-lg shadow-lg text-center overflow-hidden">
 
                             <button
-                                class="w-full px-4 py-3 text-left bg-gray-700 text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                class="w-full px-4 py-3 text-left bg-mju  text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
                                 พฤหัสบดี <span class="text-white">+</span>
                             </button>
 
@@ -387,10 +388,10 @@
                         </div>
 
                         <!-- ศุกร์ -->
-                        <div class="border rounded-lg shadow-lg text-center overflow-hidden">
+                        <div class="rounded-lg shadow-lg text-center overflow-hidden">
 
                             <button
-                                class="w-full px-4 py-3 text-left bg-gray-700 text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                class="w-full px-4 py-3 text-left bg-mju text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
                                 ศุกร์ <span class="text-white">+</span>
                             </button>
 
@@ -454,20 +455,15 @@
                         <table class="min-w-full border border-gray-300 rounded-lg overflow-hidden">
                             <thead class="bg-gray-100">
                                 <tr>
-                                    <th
-                                        class="px-4 py-3 text-left text-gray-700 font-semibold border-b border-gray-300">
+                                    <th class="px-4 py-3 text-left font-semibold border-b border-gray-300">
                                         รหัสวิชา</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-gray-700 font-semibold border-b border-gray-300">
+                                    <th class="px-4 py-3 text-left font-semibold border-b border-gray-300">
                                         ชื่อรายวิชา</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-gray-700 font-semibold border-b border-gray-300">
+                                    <th class="px-4 py-3 text-left font-semibold border-b border-gray-300">
                                         กลุ่ม</th>
-                                    <th
-                                        class="px-4 py-3 text-center text-gray-700 font-semibold border-b border-gray-300">
+                                    <th class="px-4 py-3 text-center font-semibold border-b border-gray-300">
                                         สอบกลางภาค</th>
-                                    <th
-                                        class="px-4 py-3 text-center text-gray-700 font-semibold border-b border-gray-300">
+                                    <th class="px-4 py-3 text-center font-semibold border-b border-gray-300">
                                         สอบปลายภาค</th>
                                 </tr>
                             </thead>
@@ -622,40 +618,6 @@
             </div>
         </div>
     </footer>
-
-
-
-
-
-    <script>
-        const carousel = document.getElementById('carousel');
-        const slides = carousel.children;
-        const totalSlides = slides.length;
-        let index = 0;
-
-        const updateCarousel = () => {
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-            document.querySelectorAll('.dot').forEach((dot, i) => {
-                dot.classList.toggle('bg-green-700', i === index);
-                dot.classList.toggle('bg-gray-300', i !== index);
-            });
-        };
-
-        document.getElementById('next').addEventListener('click', () => {
-            index = (index + 1) % totalSlides;
-            updateCarousel();
-        });
-
-        document.getElementById('prev').addEventListener('click', () => {
-            index = (index - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        });
-
-        setInterval(() => {
-            index = (index + 1) % totalSlides;
-            updateCarousel();
-        }, 4000); // Auto slide every 4s
-    </script>
 
     <script>
         const menuBtn = document.getElementById('menu-btn');
