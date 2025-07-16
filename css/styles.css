@@ -45,3 +45,8 @@ thead {
   background-color: #6c8c6a;
   color: white;
 }
+
+td a {
+  color: #07af31;
+  text-decoration: underline;
+}
