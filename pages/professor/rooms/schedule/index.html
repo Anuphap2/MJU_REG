@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJU | ระบบบริการการศึกษา</title>
+    <link rel="shortcut icon" href="../../../../assets/LOGO.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="../../../../css/output.css">
+    <link rel="stylesheet" href="../../../../css/styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-5">
+                    <img src="../../../../assets/LOGO.png" alt="Logo" class="h-16 w-16 object-contain">
+                    <div class="flex flex-col items-start">
+                        <span class="font-heading text-md">ระบบบริการการศึกษา</span>
+                        <span class="font-heading text-md">มหาวิทยาลัยแม่โจ้</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Menu (Desktop) -->
+                <div id="menu-desktop" class="hidden md:flex space-x-6 text-md items-center">
+                    <a href="../../">หน้าแรก</a>
+                    <a href="../../schedule/">รายวิชาที่สอน</a>
+                    <a href="../../grade/">บันทึกเกรดรายบุคคล</a>
+                    <a href="../">การใช้ห้อง</a>
+                    <a href="../../calendar/">ปฏิทิน</a>
+                    <a href="../../../../" id="logout" class="bg-gray-200 px-4 py-1 rounded-lg shadow">
+                        ออกจากระบบ
+                    </a>
+
+                </div>
+
+                <!-- Hamburger (Mobile) -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="focus:outline-none cursor-pointer">
+                        <!-- Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu (Mobile) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-green-600 text-white transition-all duration-300 ease-in-out">
+            <a href="../../" class="block px-4 py-3 hover:bg-green-500">หน้าแรก</a>
+            <a href="../../schedule/" class="block px-4 py-3 hover:bg-green-500">รายวิชาที่สอน</a>
+            <a href="../../grade/" class="block px-4 py-3 hover:bg-green-500">บันทึกเกรดรายบุคคล</a>
+
+            <a href="../" class="block px-4 py-3 hover:bg-green-500">การใช้ห้อง</a>
+            <a href="../../calendar/" class="block px-4 py-3 hover:bg-green-500">ปฏิทิน</a>
+            <a href="../../../../" id="logout" class="block px-4 py-3 bg-white text-green-700">
+                ออกจากระบบ
+            </a>
+        </div>
+
+
+    </nav>
+
+
+    <main>
+        <!-- Conitainer -->
+        <div class="container-main">
+            <div class="w-full p-6 rounded-lg">
+                <div class="bg-white mb-6 p-6 md:p-8 rounded-lg shadow-lg">
+                    <!-- หัวข้อ -->
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 font-heading">ตารางการใช้ห้อง</h1>
+                    <p class="text-gray-700 mb-3">
+                        ข้อมูลในตารางประกอบด้วย:
+                        <span class="font-medium">รหัสวิชา (หน่วยกิต), กลุ่ม, ระดับการศึกษา</span>
+                    </p>
+
+                    <!-- ระดับการศึกษา -->
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
+                        <h2 class="font-semibold text-gray-800 mb-2 text-sm md:text-base">ระดับการศึกษา:</h2>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-1 text-sm text-gray-600">
+                            <p><span class="font-bold text-gray-800">L0</span> = ไม่กำหนด</p>
+                            <p><span class="font-bold text-gray-800">L1</span> = ปริญญาตรี ปกติ</p>
+                            <p><span class="font-bold text-gray-800">L2</span> = ปริญญาตรี สมทบ</p>
+                            <p><span class="font-bold text-gray-800">L3</span> = ปริญญาโท ปกติ</p>
+                            <p><span class="font-bold text-gray-800">L4</span> = ปริญญาโท สมทบ</p>
+                            <p><span class="font-bold text-gray-800">L5</span> = ปริญญาเอก ปกติ</p>
+                            <p><span class="font-bold text-gray-800">L6</span> = ประกาศนียบัตร</p>
+                            <p><span class="font-bold text-gray-800">L7</span> = ปริญญาเอก สมทบ</p>
+                            <p><span class="font-bold text-gray-800">L8</span> = ปริญญาตรีควบโท</p>
+                        </div>
+                    </div>
+
+
+                    <!-- ตัวเลือกปีการศึกษา และ ห้อง จัดวางในบรรทัดเดียวกันบนจอใหญ่ -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                        <!-- ปีการศึกษา -->
+                        <div class="flex items-center gap-3 flex-1 min-w-0">
+                            <label for="year"
+                                class="font-semibold text-gray-900 text-sm md:text-base whitespace-nowrap">ปีการศึกษา:</label>
+                            <select id="year" name="year"
+                                class="flex-grow border border-gray-300 rounded-md px-2 py-1 bg-white text-gray-700 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 min-w-0">
+                                <option value="2568-1" selected>2568 / 1</option>
+                                <option value="2568-2">2568 / 2</option>
+                                <option value="2567-1">2567 / 1</option>
+                                <option value="2567-2">2567 / 2</option>
+                            </select>
+                        </div>
+
+                        <!-- ห้อง -->
+                        <div class="flex items-center gap-3 flex-1 min-w-0">
+                            <label for="room"
+                                class="font-semibold text-gray-900 text-sm md:text-base whitespace-nowrap">ห้อง:</label>
+                            <select id="room" name="room"
+                                class="flex-grow w-full border border-gray-300 rounded-md px-2 py-1 bg-white text-gray-700 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400">
+                                <option value="6361">1104 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : </option>
+                                <option value="6141">C 205 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : </option>
+                                <option value="6282">C 206 IT ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : </option>
+                                <option value="6201">C 301 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : </option>
+                                <option value="3044">C 302 IT ประเภท : Computer+Presenter+Projector+TV.+OHP+Tape ความจุ
+                                    : 35
+                                    พื้นที่ : 100</option>
+                                <option value="6067">C 305 IT ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : </option>
+                                <option value="6068">C 401 ประเภท : ไม่กำหนด ความจุ : 80 พื้นที่ : </option>
+                                <option value="6023">C 403 IT ประเภท : ไม่กำหนด ความจุ : 80 พื้นที่ : </option>
+                                <option value="6026">C 405 IT ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : </option>
+                                <option value="6261">C 406 IT ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : </option>
+                                <option value="4621">C301 IT ประเภท : Computer+Presenter+Projector+TV.+OHP+Tape ความจุ :
+                                    50
+                                    พื้นที่ : 100</option>
+                                <option value="5681">COM 3203 ประเภท : ไม่กำหนด ความจุ : 60 พื้นที่ : </option>
+                                <option value="7201">Co working space ประเภท : ไม่กำหนด ความจุ : 0 พื้นที่ : 0</option>
+                                <option value="6501">GI1 ประเภท : ไม่กำหนด ความจุ : 0 พื้นที่ : </option>
+                                <option value="6502">GI2 ประเภท : ไม่กำหนด ความจุ : 0 พื้นที่ : </option>
+                                <option value="2351">L พันธุศาสตร์ ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="2861">L ฟิสิกส์ ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="2043">LAB ชีว ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="2044">LAB เคมี ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="2203">LAB1 ชั้น 5 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="5661">Lab IT 3202-1 ประเภท : ไม่กำหนด ความจุ : 120 พื้นที่ : </option>
+                                <option value="5963">Lab IT 3202-2 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : </option>
+                                <option value="3981">Lab Molecular ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="5261">Lab PTC ประเภท : ไม่กำหนด ความจุ : 30 พื้นที่ : </option>
+                                <option value="3561">Lab คณิต 1 ประเภท : ไม่กำหนด ความจุ : 60 พื้นที่ : 100</option>
+                                <option value="5321">Lab คณิต 3 ประเภท : ไม่กำหนด ความจุ : 60 พื้นที่ : </option>
+                                <option value="3821">Lab คณิต 4 ประเภท : ไม่กำหนด ความจุ : 60 พื้นที่ : 100</option>
+                                <option value="4962">Lab คอม 1 ประเภท : ไม่กำหนด ความจุ : 30 พื้นที่ : 100</option>
+                                <option value="4966">Lab คอม 3 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="4967">Lab คอม 4 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="4968">Lab คอม 5 ประเภท : ไม่กำหนด ความจุ : 30 พื้นที่ : 100</option>
+                                <option value="4964">Lab คอม2 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="8142">Lab คอม3-4 ประเภท : ไม่กำหนด ความจุ : 120 พื้นที่ : 120</option>
+                                <option value="5921">Lab วิทย์ 2305 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 50</option>
+                                <option value="3222">Lab สถิติ ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="4976">Lab ไอที 1 ประเภท : ไม่กำหนด ความจุ : 45 พื้นที่ : 100</option>
+                                <option value="4977">Lab ไอที 2 ประเภท : ไม่กำหนด ความจุ : 45 พื้นที่ : 100</option>
+                                <option value="2541">Lab2 (คศ) ประเภท : ไม่กำหนด ความจุ : 60 พื้นที่ : 100</option>
+                                <option value="3881">Lวิทย์ 1105 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="1923">Lวิทย์ 1109 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1910">Lวิทย์ 1112 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1908">Lวิทย์ 1113 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1912">Lวิทย์ 1115 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1915">Lวิทย์ 1203 ประเภท : ไม่กำหนด ความจุ : 35 พื้นที่ : 100</option>
+                                <option value="1917">Lวิทย์ 1205 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1918">Lวิทย์ 1206 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1921">Lวิทย์ 1208/1 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="6522">Lวิทย์ 1208/2 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : </option>
+                                <option value="4021">Lวิทย์ 1209 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="1919">Lวิทย์ 1211 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1920">Lวิทย์ 1214 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1909">Lวิทย์ 1215 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1922">Lวิทย์ 1217 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1916">Lวิทย์ 1218 ประเภท : ไม่กำหนด ความจุ : 35 พื้นที่ : 100</option>
+                                <option value="4381">Lวิทย์ 2108 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="1913">Lวิทย์ 2202/1 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1914">Lวิทย์ 2202/2 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="4181">Lวิทย์ 2202/3 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="3882">Lวิทย์ 2206 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="3522">Lวิทย์ 2302 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="3523">Lวิทย์ 2304 ประเภท : ไม่กำหนด ความจุ : 36 พื้นที่ : 100</option>
+                                <option value="1737">Lวิทย์ 2306 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="3541">Lวิทย์ 2308 ประเภท : ไม่กำหนด ความจุ : 20 พื้นที่ : 100</option>
+                                <option value="4081">MS 1 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="4871">MS 2 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : </option>
+                                <option value="5342">MS3 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : </option>
+                                <option value="5348">MS5 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : </option>
+                                <option value="8461">Sci Digital Lab ประเภท : ไม่กำหนด ความจุ : 45 พื้นที่ : 100
+                                </option>
+                                <option value="6047">TBA(วิทย์) ประเภท : ไม่กำหนด ความจุ : 100 พื้นที่ : 100</option>
+                                <option value="1948">TBA(วิทย์) ประเภท : ไม่กำหนด ความจุ : 100 พื้นที่ : 100</option>
+                                <option value="2347">บ.เคมี 3 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="2348">บ.เคมี 4 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="4970" selected="">บรรยาย คอม 6 ประเภท : ไม่กำหนด ความจุ : 65 พื้นที่ :
+                                    100
+                                </option>
+                                <option value="4971">บรรยาย คอม 7 ประเภท : ไม่กำหนด ความจุ : 54 พื้นที่ : 100</option>
+                                <option value="4972">บรรยาย คอม 8 ประเภท : ไม่กำหนด ความจุ : 80 พื้นที่ : 100</option>
+                                <option value="3982">บรรยาย ป.โท ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="4973">บรรยาย ไอที 1 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="4974">บรรยาย ไอที 2 ประเภท : ไม่กำหนด ความจุ : 45 พื้นที่ : 100</option>
+                                <option value="2641">วิทย์ 1107 ประเภท : ไม่กำหนด ความจุ : 30 พื้นที่ : 60</option>
+                                <option value="1726">วิทย์ 1108 ประเภท : ไม่กำหนด ความจุ : 160 พื้นที่ : 100</option>
+                                <option value="1727">วิทย์ 1116 ประเภท : ไม่กำหนด ความจุ : 60 พื้นที่ : 100</option>
+                                <option value="1728">วิทย์ 2105 ประเภท : ไม่กำหนด ความจุ : 164 พื้นที่ : 100</option>
+                                <option value="1731">วิทย์ 2109 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1730">วิทย์ 2202 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1903">วิทย์ 2203 ประเภท : ไม่กำหนด ความจุ : 100 พื้นที่ : 100</option>
+                                <option value="1904">วิทย์ 2204 ประเภท : ไม่กำหนด ความจุ : 100 พื้นที่ : 100</option>
+                                <option value="1729">วิทย์ 2205 ประเภท : ไม่กำหนด ความจุ : 130 พื้นที่ : 100</option>
+                                <option value="6962">วิทย์ 2206 ประเภท : ไม่กำหนด ความจุ : 30 พื้นที่ : 100</option>
+                                <option value="1732">วิทย์ 2301 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1733">วิทย์ 2302 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1734">วิทย์ 2303 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1736">วิทย์ 2305 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1738">วิทย์ 2307 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1739">วิทย์ 2308 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1740">วิทย์ 2309 ประเภท : ไม่กำหนด ความจุ : 130 พื้นที่ : 100</option>
+                                <option value="5063">วิทย์ 2310 ประเภท : ไม่กำหนด ความจุ : 30 พื้นที่ : 100</option>
+                                <option value="1902">วิทย์ 2311 ประเภท : ไม่กำหนด ความจุ : 130 พื้นที่ : 100</option>
+                                <option value="4401">วิทย์ 2312 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="5062">วิทย์ 2312 ประเภท : ไม่กำหนด ความจุ : 30 พื้นที่ : 30</option>
+                                <option value="4402">วิทย์ 2314 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="1741">วิทย์ 2401 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1742">วิทย์ 2402 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1743">วิทย์ 2403 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1744">วิทย์ 2404 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1745">วิทย์ 2405 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1746">วิทย์ 2406 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1747">วิทย์ 2407 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1748">วิทย์ 2408 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1749">วิทย์ 2409 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1750">วิทย์ 2501 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1751">วิทย์ 2502 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1752">วิทย์ 2503 ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100</option>
+                                <option value="1753">วิทย์ 2504 ประเภท : ไม่กำหนด ความจุ : 70 พื้นที่ : 100</option>
+                                <option value="1754">วิทย์ 2505 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="1755">วิทย์ 2506 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="2741">วิทย์ 2507/1 ประเภท : ไม่กำหนด ความจุ : 80 พื้นที่ : 100</option>
+                                <option value="4661">วิทย์ 2507/2 ประเภท : ไม่กำหนด ความจุ : 80 พื้นที่ : 100</option>
+                                <option value="7141">วิทย์ 2610 ประเภท : ไม่กำหนด ความจุ : 0 พื้นที่ : 0</option>
+                                <option value="2882">วิทย์1109 ประเภท : ไม่กำหนด ความจุ : 50 พื้นที่ : 100</option>
+                                <option value="6021">ห้องประชุม2 ประเภท : ไม่กำหนด ความจุ : 60 พื้นที่ : </option>
+                                <option value="3941">ห้องประชุมภาคชีว ประเภท : ไม่กำหนด ความจุ : 40 พื้นที่ : 100
+                                </option>
+                                <option value="8261">ห้องสอบออนไลน์ ประเภท : ไม่กำหนด ความจุ : 100 พื้นที่ : 100
+                                </option>
+                                <option value="2822">ห้องสัมมนาเคมี ประเภท : ไม่กำหนด ความจุ : 60 พื้นที่ : 100</option>
+                                <option value="6702">เพาะเลี้ยง ประเภท : ไม่กำหนด ความจุ : 30 พื้นที่ : </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- เส้นคั่น -->
+                    <hr class="my-6 border-gray-300">
+
+                    <div class="overflow-x-auto bg-white">
+                        <div class="hidden md:block">
+                            <!-- ตารางสำหรับหน้าจอ md ขึ้นไป -->
+                            <table class="w-full border border-collapse text-center text-sm">
+                                <thead class="text-white">
+                                    <tr>
+                                        <th rowspan="2" class="px-4 py-2 border">วัน/เวลา</th>
+                                        <th colspan="2" class="px-4 py-2 border">8:00 - 9:00</th>
+                                        <th colspan="2" class="px-4 py-2 border">9:00 - 10:00</th>
+                                        <th colspan="2" class="px-4 py-2 border">10:00 - 11:00</th>
+                                        <th colspan="2" class="px-4 py-2 border">11:00 - 12:00</th>
+                                        <th colspan="2" class="px-4 py-2 border">12:00 - 13:00</th>
+                                        <th colspan="2" class="px-4 py-2 border">13:00 - 14:00</th>
+                                        <th colspan="2" class="px-4 py-2 border">14:00 - 15:00</th>
+                                        <th colspan="2" class="px-4 py-2 border">15:00 - 16:00</th>
+                                        <th colspan="2" class="px-4 py-2 border">16:00 - 17:00</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                        <th class="px-1 py-0 border" style="width: 5%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border">
+                                    <tr class="text-center">
+                                        <td class="border px-4 py-2 font-semibold bg-gray-100">จันทร์</td>
+
+                                        <td colspan="4"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301375</div>
+                                            <div>(3) 1, L1</div>
+                                        </td>
+
+                                        <td colspan="4"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301351</div>
+                                            <div>(3) 1, L1</div>
+                                        </td>
+                                        <td colspan="2" class="border"></td>
+                                        <td colspan="4"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301351</div>
+                                            <div>(3) 2, L1</div>
+                                        </td>
+                                        <td colspan="4"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301374</div>
+                                            <div>(3) 1, L1</div>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="text-center">
+                                        <td class="border px-4 py-2 font-semibold bg-gray-100">อังคาร</td>
+                                        <td colspan="2" class="border"></td>
+                                        <td colspan="6"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301341</div>
+                                            <div>(3) 1, L1</div>
+                                        </td>
+
+                                        <td colspan="4" class="border"></td>
+                                        <td colspan="6"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301385</div>
+                                            <div>(3) 1, L1</div>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="text-center">
+                                        <td class="border px-4 py-2 font-semibold bg-gray-100">พุธ</td>
+                                        <td colspan="2" class="border"></td>
+                                        <td colspan="6"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301491</div>
+                                            <div>(3) 1, L1</div>
+                                        </td>
+                                        <td colspan="10" class="border"></td>
+                                    </tr>
+
+                                    <tr class="text-center">
+                                        <td class="border px-4 py-2 font-semibold bg-gray-100">พฤหัสบดี</td>
+                                        <td colspan="10" class="border"></td>
+                                        <td colspan="6"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301375</div>
+                                            <div>(3) 1, L1</div>
+                                        </td>
+                                        <td colspan="2" class="border"></td>
+                                    </tr>
+
+                                    <tr class="text-center">
+                                        <td class="border px-4 py-2 font-semibold bg-gray-100">ศุกร์</td>
+                                        <td colspan="13" class="border"></td>
+                                        <td colspan="4"
+                                            class="border bg-blue-100 shadow-sm hover:bg-blue-200 cursor-pointer p-2">
+                                            <div class="font-bold">10301385</div>
+                                            <div>(3) 1, L1</div>
+                                        </td>
+                                        <td colspan="2" class="border"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Accordion สำหรับมือถือ -->
+                        <!-- Accordion สำหรับมือถือ -->
+                        <div class="md:hidden space-y-4">
+
+                            <!-- จันทร์ -->
+                            <div class="rounded-lg shadow-lg text-center overflow-hidden">
+                                <button
+                                    class="w-full px-4 py-3 text-left bg-mju text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                    จันทร์ <span class="text-white">+</span>
+                                </button>
+                                <div class="hidden accordion-content bg-gray-50 px-4 py-3 space-y-4 p-3">
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">8:00 - 10:00</span></p>
+                                        <p class="font-bold text-gray-700">10301375</p>
+                                        <p class="text-sm">(3) 1, L1</p>
+                                    </div>
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">10:00 - 12:00</span></p>
+                                        <p class="font-bold text-gray-700">10301351</p>
+                                        <p class="text-sm">(3) 1, L1</p>
+                                    </div>
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">13:00 - 15:00</span></p>
+                                        <p class="font-bold text-gray-700">10301351</p>
+                                        <p class="text-sm">(3) 2, L1</p>
+                                    </div>
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">15:00 - 17:00</span></p>
+                                        <p class="font-bold text-gray-700">10301374</p>
+                                        <p class="text-sm">(3) 1, L1</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- อังคาร -->
+                            <div class="rounded-lg shadow-lg text-center overflow-hidden">
+                                <button
+                                    class="w-full px-4 py-3 text-left bg-mju text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                    อังคาร <span class="text-white">+</span>
+                                </button>
+                                <div class="hidden accordion-content bg-gray-50 px-4 py-3 space-y-4">
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">9:00 - 12:00</span></p>
+                                        <p class="font-bold text-gray-700">10301341</p>
+                                        <p class="text-sm">(3) 1, L1</p>
+                                    </div>
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">14:30 - 17:00</span></p>
+                                        <p class="font-bold text-gray-700">10301385</p>
+                                        <p class="text-sm">(3) 1, L1</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- พุธ -->
+                            <div class="rounded-lg shadow-lg text-center overflow-hidden">
+                                <button
+                                    class="w-full px-4 py-3 text-left bg-mju text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                    พุธ <span class="text-white">+</span>
+                                </button>
+                                <div class="hidden accordion-content bg-gray-50 px-4 py-3 space-y-4">
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">9:00 - 12:00</span></p>
+                                        <p class="font-bold text-gray-700">10301491</p>
+                                        <p class="text-sm">(3) 1, L1</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- พฤหัสบดี -->
+                            <div class="rounded-lg shadow-lg text-center overflow-hidden">
+                                <button
+                                    class="w-full px-4 py-3 text-left bg-mju text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                    พฤหัสบดี <span class="text-white">+</span>
+                                </button>
+                                <div class="hidden accordion-content bg-gray-50 px-4 py-3 space-y-4">
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">14:00 - 17:00</span></p>
+                                        <p class="font-bold text-gray-700">10301375</p>
+                                        <p class="text-sm">(3) 1, L1</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ศุกร์ -->
+                            <div class="rounded-lg shadow-lg text-center overflow-hidden">
+                                <button
+                                    class="w-full px-4 py-3 text-left bg-mju text-white font-semibold flex justify-between items-center accordion-header cursor-pointer">
+                                    ศุกร์ <span class="text-white">+</span>
+                                </button>
+                                <div class="hidden accordion-content bg-gray-50 px-4 py-3 space-y-4">
+                                    <div class="bg-white rounded-lg shadow border-l-4 border-blue-500">
+                                        <p class="text-md text-gray-500 mb-1">เวลา: <span
+                                                class="font-semibold text-gray-700">14:30 - 16:30</span></p>
+                                        <p class="font-bold text-gray-700">10301491</p>
+                                        <p class="text-sm">(3) 1, L1</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <script src="../../../../js/accordion.js"></script>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </main>
+
+    <footer class="bg-white shadow-[0_-4px_6px_rgba(0,0,0,0.1)] mt-8">
+        <div class="container mx-auto px-4 py-6 text-center">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <img class="h-12 w-auto" src="../../../../assets/LOGO.png" alt="มหาวิทยาลัยแม่โจ้ Logo">
+                <p class="text-gray-600 text-sm sm:text-base">
+                    &copy; 2025 มหาวิทยาลัยแม่โจ้. สงวนลิขสิทธิ์.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../../js/hamberger.js"></script>
+
+
+</body>
+
+</html>
